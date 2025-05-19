@@ -7,10 +7,22 @@
             <mat-card-content fxLayout="column">
                 <mat-form-field fxFlex>
                     <input matInput placeholder="Email" formControlName="email">
+                    <mat-error *ngIf="form.get('email')?.hasError('required')">
+                        Email is required
+                    </mat-error>
+                    <mat-error *ngIf="form.get('email')?.hasError('email')">
+                        Please enter a valid email address
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field fxFlex>
                     <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password"
                         formControlName="password">
+                    <mat-error *ngIf="form.get('password')?.hasError('required')">
+                        Password is required
+                    </mat-error>
+                    <mat-error *ngIf="form.get('password')?.hasError('min')">
+                        Password must be at least 3 characters
+                    </mat-error>
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                         [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>

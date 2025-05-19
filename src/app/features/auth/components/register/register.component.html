@@ -7,15 +7,45 @@
             <mat-card-content fxLayout="column">
                 <mat-form-field fxFlex>
                     <input matInput placeholder="First name" formControlName="firstName">
+                    <mat-error *ngIf="form.get('firstName')?.hasError('required')">
+                        First name is required
+                    </mat-error>
+                    <mat-error *ngIf="form.get('firstName')?.hasError('minlength')">
+                        First name must be at least 3 characters long
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field fxFlex>
                     <input matInput placeholder="Last name" formControlName="lastName">
+                    <mat-error *ngIf="form.get('lastName')?.hasError('required')">
+                        Last name is required
+                    </mat-error>
+                    <mat-error *ngIf="form.get('lastName')?.hasError('minlength')">
+                        Last name must be at least 3 characters long
+                    </mat-error>
+                    <mat-error *ngIf="form.get('lastName')?.hasError('maxlength')">
+                        Last name must be at most 20 characters long
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field fxFlex>
                     <input matInput placeholder="Email" formControlName="email">
+                    <mat-error *ngIf="form.get('email')?.hasError('required')">
+                        Email is required
+                    </mat-error>
+                    <mat-error *ngIf="form.get('email')?.hasError('email')">
+                        Please enter a valid email address
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field fxFlex>
                     <input matInput placeholder="Password" formControlName="password">
+                    <mat-error *ngIf="form.get('password')?.hasError('required')">
+                        Password is required
+                    </mat-error>
+                    <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+                        Password must be at least 3 characters long
+                    </mat-error>
+                    <mat-error *ngIf="form.get('password')?.hasError('maxlength')">
+                        Password must be at most 40 characters long
+                    </mat-error>
                 </mat-form-field>
             </mat-card-content>
             <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
