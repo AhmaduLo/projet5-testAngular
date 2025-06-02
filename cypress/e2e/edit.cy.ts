@@ -31,4 +31,6 @@ describe('Edit session', () => {
         cy.contains('Logout', { timeout: 10000 }).should('be.visible').click();
     })
 
+   
+
 })

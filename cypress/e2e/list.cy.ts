@@ -13,5 +13,7 @@ describe('Rental list', () => {
         cy.get('mat-form-field [formControlName="description"]').type("Très pratique et bon pour la santé");
         cy.get('button[type="submit"]').click();
 
+        
+
     });
 });
